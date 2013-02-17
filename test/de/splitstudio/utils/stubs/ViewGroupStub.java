@@ -1,4 +1,4 @@
-package de.splitstudio.utils;
+package de.splitstudio.utils.stubs;
 
 import android.app.Activity;
 import android.view.ViewGroup;
