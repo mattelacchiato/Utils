@@ -6,7 +6,6 @@ import static org.junit.Assert.assertThat;
 import java.util.Locale;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -26,29 +25,12 @@ public class CalculatorTest {
 
 	@Before
 	public void setUp() {
-		calculator = createCalculator(Locale.US);
-		amountEdit = (EditText) calculator.findViewById(R.id.calculator_amount);
-	}
-
-	private Calculator createCalculator(Locale locale) {
-		Calculator calculator = (Calculator) LayoutInflater.from(createLocaleSpecificActivity()).inflate(
-			R.layout.calculator, null);
-		calculator.onAttachedToWindow();
-		return calculator;
-	}
-
-	@Test
-	@Ignore
-	public void germanLocale_speratorIsColon() {
-		calculator = createCalculator(Locale.GERMANY);
-		Button deleteButton = (Button) calculator.findViewById(R.id.button_seperator);
-		assertThat(deleteButton.getText().toString(), is(","));
-	}
-
-	protected Activity createLocaleSpecificActivity() {
 		Activity activity = new Activity();
 		activity.getResources().getConfiguration().locale = Locale.US;
-		return activity;
+
+		calculator = (Calculator) LayoutInflater.from(activity).inflate(R.layout.calculator, null);
+		amountEdit = (EditText) calculator.findViewById(R.id.calculator_amount);
+		calculator.onAttachedToWindow();
 	}
 
 	@Test
@@ -96,4 +78,5 @@ public class CalculatorTest {
 		((Button) calculator.findViewById(buttonId)).performClick();
 		assertThat(amountEdit.getText().toString(), is(expected));
 	}
+
 }
