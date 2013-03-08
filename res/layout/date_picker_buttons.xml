@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.splitstudio.utils.view.DatePickerButtons xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/date_picker"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp" >
+
+    <Button
+        android:id="@+id/date_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="&lt;"
+        android:width="50sp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/date_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/date_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text=">"
+        android:width="50sp"
+        tools:ignore="HardcodedText" />
+
+</de.splitstudio.utils.view.DatePickerButtons>

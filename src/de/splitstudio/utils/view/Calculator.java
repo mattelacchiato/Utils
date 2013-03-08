@@ -2,6 +2,7 @@ package de.splitstudio.utils.view;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Locale;
 
 import android.content.Context;
@@ -12,10 +13,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import de.splitstudio.utils.NumberUtils;
 import de.splitstudio.utils.R;
 
 public class Calculator extends LinearLayout {
+
 	private EditText amountEdit;
+
+	private Locale locale;
 
 	public Calculator(final Context context) {
 		super(context);
@@ -25,11 +30,16 @@ public class Calculator extends LinearLayout {
 		super(context, attrs);
 	}
 
+	public int parseAmountInCent() throws ParseException {
+		String amountString = amountEdit.getText().toString();
+		return NumberUtils.parseCent(amountString, locale);
+	}
+
 	@Override
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();
 		amountEdit = (EditText) findViewById(R.id.calculator_amount);
-		Locale locale = getContext().getResources().getConfiguration().locale;
+		locale = getResources().getConfiguration().locale;
 		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(locale);
 
 		setCharInDecimalSeperatorButton(currencyFormat);
