@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<de.splitstudio.utils.view.DatePickerButtons xmlns:android="http://schemas.android.com/apk/res/android"
+<de.splitstudio.utils.view.DatePickerButtons 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/date_picker"
     android:layout_width="fill_parent"

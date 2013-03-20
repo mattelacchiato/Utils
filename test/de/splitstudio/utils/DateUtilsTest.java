@@ -1,10 +1,18 @@
 package de.splitstudio.utils;
 
+import static de.splitstudio.utils.DateUtils.createFirstDayOfMonth;
+import static de.splitstudio.utils.DateUtils.createFirstDayOfYear;
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.HOUR_OF_DAY;
+import static java.util.Calendar.MILLISECOND;
+import static java.util.Calendar.MINUTE;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.SECOND;
+import static java.util.Calendar.YEAR;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import org.junit.Before;
@@ -22,31 +30,40 @@ public class DateUtilsTest {
 
 	@Test
 	public void createFirstDayOfMonth_yearIsSet() {
-		assertThat(dateToTest().get(Calendar.YEAR), is(now.get(Calendar.YEAR)));
+		assertThat(createFirstDayOfMonth(LOCALE).get(YEAR), is(now.get(YEAR)));
 	}
 
 	@Test
 	public void createFirstDayOfMonth_monthIsSet() {
-		assertThat(dateToTest().get(Calendar.MONTH), is(now.get(Calendar.MONTH)));
+		assertThat(createFirstDayOfMonth(LOCALE).get(MONTH), is(now.get(MONTH)));
 	}
 
 	@Test
 	public void createFirstDayOfMonth_dayIsOne() {
-		assertThat(dateToTest().get(Calendar.DAY_OF_MONTH), is(1));
+		assertThat(createFirstDayOfMonth(LOCALE).get(DAY_OF_MONTH), is(1));
 	}
 
 	@Test
 	public void createFirstDayOfMonth_OthersAreZero() {
-		assertThat(dateToTest().get(Calendar.HOUR_OF_DAY), is(0));
-		assertThat(dateToTest().get(Calendar.MINUTE), is(0));
-		assertThat(dateToTest().get(Calendar.SECOND), is(0));
-		assertThat(dateToTest().get(Calendar.MILLISECOND), is(0));
+		assertThat(createFirstDayOfMonth(LOCALE).get(HOUR_OF_DAY), is(0));
+		assertThat(createFirstDayOfMonth(LOCALE).get(MINUTE), is(0));
+		assertThat(createFirstDayOfMonth(LOCALE).get(SECOND), is(0));
+		assertThat(createFirstDayOfMonth(LOCALE).get(MILLISECOND), is(0));
 	}
 
-	private Calendar dateToTest() {
-		Date date = DateUtils.createFirstDayOfMonth(LOCALE);
-		Calendar actual = Calendar.getInstance(LOCALE);
-		actual.setTime(date);
-		return actual;
+	@Test
+	public void createFirstDayOfYear_yearIsSet() {
+		assertThat(DateUtils.createFirstDayOfYear(LOCALE).get(YEAR), is(now.get(YEAR)));
 	}
+
+	@Test
+	public void createFirstDayOfYear_OthersAreZero() {
+		assertThat(createFirstDayOfYear(LOCALE).get(MONTH), is(0));
+		assertThat(createFirstDayOfYear(LOCALE).get(DAY_OF_MONTH), is(1));
+		assertThat(createFirstDayOfYear(LOCALE).get(HOUR_OF_DAY), is(0));
+		assertThat(createFirstDayOfYear(LOCALE).get(MINUTE), is(0));
+		assertThat(createFirstDayOfYear(LOCALE).get(SECOND), is(0));
+		assertThat(createFirstDayOfYear(LOCALE).get(MILLISECOND), is(0));
+	}
+
 }
