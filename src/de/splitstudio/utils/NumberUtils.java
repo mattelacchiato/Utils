@@ -12,7 +12,11 @@ public class NumberUtils {
 		return NumberFormat.getCurrencyInstance(locale).format(centToDouble(cents));
 	}
 
-	private static double centToDouble(int cents) {
+	public static String formatAsCurrency(int cents) {
+		return formatAsCurrency(cents, Locale.getDefault());
+	}
+
+	public static double centToDouble(int cents) {
 		return cents / CENT_FACTOR;
 	}
 
