@@ -17,12 +17,12 @@ import android.view.View;
 public class ObjectExpandableListAdapterTest {
 
 	private List<String> list;
-	private ObjectExpandableListAdapter<String> listAdapter;
+	private ObjectExpandableListAdapter<String> adapter;
 
 	@Before
 	public void setUp() {
 		list = Arrays.asList("a", "b", "c");
-		listAdapter = new ObjectExpandableListAdapter<String>(null, list, 0, 0) {
+		adapter = new ObjectExpandableListAdapter<String>(null, list, 0, 0) {
 			@Override
 			public void bindGroupView(View view, String object) {}
 
@@ -33,34 +33,34 @@ public class ObjectExpandableListAdapterTest {
 
 	@Test
 	public void getGroupCount_sizeOfList() {
-		assertThat(listAdapter.getGroupCount(), is(3));
+		assertThat(adapter.getGroupCount(), is(3));
 	}
 
 	@Test
 	public void getChildrenCount_always1() {
-		assertThat(listAdapter.getChildrenCount(0), is(1));
+		assertThat(adapter.getChildrenCount(0), is(1));
 	}
 
 	@Test
 	public void getGroup_objectAtPosition() {
-		assertThat(listAdapter.getGroup(0), is("a"));
-		assertThat(listAdapter.getGroup(1), is("b"));
-		assertThat(listAdapter.getGroup(2), is("c"));
+		assertThat(adapter.getGroup(0), is("a"));
+		assertThat(adapter.getGroup(1), is("b"));
+		assertThat(adapter.getGroup(2), is("c"));
 	}
 
 	@Test
 	public void getGroupId_position() {
-		assertThat(listAdapter.getGroupId(0), is(0L));
-		assertThat(listAdapter.getGroupId(200), is(200L));
+		assertThat(adapter.getGroupId(0), is(0L));
+		assertThat(adapter.getGroupId(200), is(200L));
 	}
 
 	@Test
 	public void getChildId_always0() {
-		assertThat(listAdapter.getChildId(123, 123), is(0L));
+		assertThat(adapter.getChildId(123, 123), is(0L));
 	}
 
 	@Test
 	public void hasStableIds_false() {
-		assertThat(listAdapter.hasStableIds(), is(false));
+		assertThat(adapter.hasStableIds(), is(false));
 	}
 }
