@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 
 public abstract class ObjectListAdapter<T> extends BaseAdapter {
 
-	private final List<T> objects;
+	protected final List<T> objects;
 
 	private final LayoutInflater layoutInflater;
 

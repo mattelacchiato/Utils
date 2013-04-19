@@ -20,8 +20,8 @@ public class NumberUtils {
 		return cents / CENT_FACTOR;
 	}
 
-	public static int parseCent(String amount, Locale locale) throws ParseException {
-		return (int) (NumberFormat.getNumberInstance(locale).parse(amount).doubleValue() * CENT_FACTOR);
+	public static int parseCent(String amount) throws ParseException {
+		return (int) (NumberFormat.getNumberInstance().parse(amount).doubleValue() * CENT_FACTOR);
 	}
 
 }

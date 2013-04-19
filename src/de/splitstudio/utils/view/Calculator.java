@@ -2,7 +2,6 @@ package de.splitstudio.utils.view;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.Locale;
 
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import de.splitstudio.utils.NumberUtils;
 import de.splitstudio.utils.R;
 
 public class Calculator extends LinearLayout {
@@ -30,9 +28,8 @@ public class Calculator extends LinearLayout {
 		super(context, attrs);
 	}
 
-	public int parseAmountInCent() throws ParseException {
-		String amountString = amountEdit.getText().toString();
-		return NumberUtils.parseCent(amountString, locale);
+	public String getAmount() {
+		return amountEdit.getText().toString();
 	}
 
 	@Override
