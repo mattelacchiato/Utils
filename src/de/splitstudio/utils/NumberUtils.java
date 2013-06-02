@@ -21,7 +21,14 @@ public class NumberUtils {
 	}
 
 	public static int parseCent(String amount) throws ParseException {
-		return (int) (NumberFormat.getNumberInstance().parse(amount).doubleValue() * CENT_FACTOR);
+		return parseCent(amount, Locale.getDefault());
+	}
+
+	//TODO 02.06.2013: use qualifiers to test locale specific stuff!
+	//@Test @Values(qualifiers = "fr-land")
+
+	public static int parseCent(String amount, Locale locale) throws ParseException {
+		return (int) (NumberFormat.getNumberInstance(locale).parse(amount).doubleValue() * CENT_FACTOR);
 	}
 
 }
