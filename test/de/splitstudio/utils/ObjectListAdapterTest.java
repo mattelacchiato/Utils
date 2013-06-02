@@ -23,7 +23,7 @@ public class ObjectListAdapterTest {
 
 	private ObjectListAdapter<String> adapter;
 
-	private static final ViewGroup ANY_PARENT = new ViewGroup(null) {
+	private static final ViewGroup ANY_PARENT = new ViewGroup(new Activity()) {
 		@Override
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {}
 	};
