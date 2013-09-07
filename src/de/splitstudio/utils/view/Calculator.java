@@ -32,6 +32,12 @@ public class Calculator extends LinearLayout {
 		return amountEdit.getText().toString();
 	}
 
+	public Calculator setAmount(String amount) {
+		//need to use find, because onAttachedToWindow may not be called, yet
+		((EditText) findViewById(R.id.calculator_amount)).setText(amount);
+		return this;
+	}
+
 	@Override
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();

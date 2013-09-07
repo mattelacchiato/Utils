@@ -8,6 +8,18 @@ public class NumberUtils {
 
 	private static final double CENT_FACTOR = 100;
 
+	private static final NumberFormat decimalFormat = NumberFormat.getNumberInstance();
+	static {
+		decimalFormat.setMinimumFractionDigits(2);
+		decimalFormat.setMaximumFractionDigits(2);
+	}
+
+	//TODO (07.09.2013): put numberinstance as static field
+
+	public static String formatAsDecimal(int cents) {
+		return decimalFormat.format(centToDouble(cents));
+	}
+
 	public static String formatAsCurrency(int cents, Locale locale) {
 		return NumberFormat.getCurrencyInstance(locale).format(centToDouble(cents));
 	}

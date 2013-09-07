@@ -12,6 +12,8 @@ import org.robolectric.RobolectricTestRunner;
 @RunWith(RobolectricTestRunner.class)
 public class NumberUtilsTest {
 
+	//TODO (07.09.2013): rm Locales from parameters and set them via Locale.setDefault()
+
 	@Test
 	public void formatAsCurrency_formats1Dollar() {
 		assertThat(NumberUtils.formatAsCurrency(100, Locale.US), is("$1.00"));
@@ -55,5 +57,11 @@ public class NumberUtilsTest {
 	@Test
 	public void parseCent_minus123_456Euro() throws Exception {
 		assertThat(NumberUtils.parseCent("-123,456€", Locale.GERMAN), is(-12345));
+	}
+
+	@Test
+	public void formatAsDecimal_100_1dot00() {
+		Locale.setDefault(Locale.US);
+		assertThat(NumberUtils.formatAsDecimal(100), is("1.00"));
 	}
 }
