@@ -8,6 +8,7 @@ import java.util.Locale;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 import android.app.Activity;
@@ -25,7 +26,7 @@ public class CalculatorTest {
 
 	@Before
 	public void setUp() {
-		Activity activity = new Activity();
+		Activity activity = Robolectric.buildActivity(Activity.class).create().get();
 		activity.getResources().getConfiguration().locale = Locale.US;
 
 		calculator = (Calculator) LayoutInflater.from(activity).inflate(R.layout.calculator, null);

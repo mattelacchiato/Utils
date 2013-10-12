@@ -3,6 +3,7 @@ package de.splitstudio.utils;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
+import static org.robolectric.Robolectric.buildActivity;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,7 +24,7 @@ public class ObjectListAdapterTest {
 
 	private ObjectListAdapter<String> adapter;
 
-	private static final ViewGroup ANY_PARENT = new ViewGroup(new Activity()) {
+	private static final ViewGroup ANY_PARENT = new ViewGroup(buildActivity(Activity.class).create().get()) {
 		@Override
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {}
 	};
