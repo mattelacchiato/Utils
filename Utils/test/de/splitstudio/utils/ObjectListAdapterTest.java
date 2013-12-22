@@ -7,6 +7,7 @@ import static org.robolectric.Robolectric.buildActivity;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,6 +47,9 @@ public class ObjectListAdapterTest {
 				boundView = view;
 				boundObject = object;
 			}
+
+			@Override
+			public void update(List<String> objects) {}
 		};
 	}
 
@@ -54,6 +58,9 @@ public class ObjectListAdapterTest {
 		adapter = new ObjectListAdapter<String>(layoutInflater, ANY_RESOURCE_ID, Collections.<String> emptyList()) {
 			@Override
 			public void bindView(View view, String object) {}
+
+			@Override
+			public void update(List<String> objects) {}
 		};
 		assertThat(adapter.getCount(), is(0));
 	}

@@ -48,4 +48,6 @@ public abstract class ObjectListAdapter<T> extends BaseAdapter {
 
 	public abstract void bindView(View view, T object);
 
+	public abstract void update(List<T> objects);
+
 }
