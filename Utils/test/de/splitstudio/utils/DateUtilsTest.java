@@ -2,6 +2,7 @@ package de.splitstudio.utils;
 
 import static de.splitstudio.utils.DateUtils.createFirstDayOfMonth;
 import static de.splitstudio.utils.DateUtils.createFirstDayOfYear;
+import static de.splitstudio.utils.DateUtils.createLastDayOfMonth;
 import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static java.util.Calendar.MILLISECOND;
@@ -10,6 +11,7 @@ import static java.util.Calendar.MONTH;
 import static java.util.Calendar.SECOND;
 import static java.util.Calendar.YEAR;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.util.Calendar;
@@ -156,6 +158,15 @@ public class DateUtilsTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date now = cal.getTime();
 		assertThat(DateUtils.isBetween(start, now, end), is(false));
+	}
+
+	@Test
+	public void createLastDayOfMonth_plusOneMilli_equalsFirstDayOfNextMonth() throws Exception {
+		Calendar lastDay = createLastDayOfMonth();
+		lastDay.add(Calendar.MILLISECOND, 1);
+		Calendar firstDay = createFirstDayOfMonth();
+		firstDay.add(MONTH, 1);
+		assertThat(lastDay.getTime(), equalTo(firstDay.getTime()));
 	}
 
 }
