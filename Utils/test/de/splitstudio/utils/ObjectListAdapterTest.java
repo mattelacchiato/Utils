@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 import static org.robolectric.Robolectric.buildActivity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +24,8 @@ import android.view.ViewGroup;
 @RunWith(RobolectricTestRunner.class)
 public class ObjectListAdapterTest {
 
+	private List<String> objects;
+
 	private ObjectListAdapter<String> adapter;
 
 	private static final ViewGroup ANY_PARENT = new ViewGroup(buildActivity(Activity.class).create().get()) {
@@ -39,8 +42,9 @@ public class ObjectListAdapterTest {
 
 	@Before
 	public void setUp() {
+		objects = new ArrayList<String>(Arrays.asList("a", "b", "c"));
 		layoutInflater = Mockito.mock(LayoutInflater.class);
-		adapter = new ObjectListAdapter<String>(layoutInflater, ANY_RESOURCE_ID, Arrays.asList("a", "b", "c")) {
+		adapter = new ObjectListAdapter<String>(layoutInflater, ANY_RESOURCE_ID, objects) {
 
 			@Override
 			public void bindView(View view, String object) {
@@ -51,6 +55,13 @@ public class ObjectListAdapterTest {
 			@Override
 			public void update(List<String> objects) {}
 		};
+	}
+
+	@Test
+	public void constructorCreatesNewListInstance() throws Exception {
+		assertThat(adapter.getCount(), is(3));
+		objects.clear();
+		assertThat(adapter.getCount(), is(3));
 	}
 
 	@Test

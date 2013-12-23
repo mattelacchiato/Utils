@@ -1,5 +1,6 @@
 package de.splitstudio.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ public abstract class ObjectListAdapter<T> extends BaseAdapter {
 	public ObjectListAdapter(LayoutInflater layoutInflater, int resourceId, List<T> objects) {
 		this.layoutInflater = layoutInflater;
 		this.layoutId = resourceId;
-		this.objects = objects;
+		this.objects = new ArrayList<T>(objects);
 	}
 
 	@Override
