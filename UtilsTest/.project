@@ -26,5 +26,10 @@
 			<type>2</type>
 			<location>/home/mb/code/Utils/test</location>
 		</link>
+		<link>
+			<name>test2</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/Utils/Utils/test</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
