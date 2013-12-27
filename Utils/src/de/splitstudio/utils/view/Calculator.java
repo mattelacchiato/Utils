@@ -74,7 +74,7 @@ public class Calculator extends LinearLayout {
 			@Override
 			public void onClick(final View v) {
 				int length = amountEdit.getText().length();
-				if (v.getId() == R.id.button_del) {
+				if (v.getId() == R.id.button_delete) {
 					if (length > 0) {
 						amountEdit.setText(amountEdit.getText().delete(length - 1, length));
 					}

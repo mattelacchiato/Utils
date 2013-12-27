@@ -1,4 +1,4 @@
-package de.splitstudio.utils;
+package de.splitstudio.utils.db;
 
 import java.util.List;
 

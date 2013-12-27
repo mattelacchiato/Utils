@@ -1,4 +1,4 @@
-package de.splitstudio.utils;
+package de.splitstudio.utils.db;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

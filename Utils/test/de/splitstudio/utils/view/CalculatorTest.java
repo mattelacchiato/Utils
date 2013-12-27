@@ -65,13 +65,13 @@ public class CalculatorTest {
 		((Button) calculator.findViewById(R.id.button_2)).performClick();
 		((Button) calculator.findViewById(R.id.button_0)).performClick();
 
-		((Button) calculator.findViewById(R.id.button_del)).performClick();
+		((Button) calculator.findViewById(R.id.button_delete)).performClick();
 		assertThat(amountEdit.getText().toString(), is("2"));
 	}
 
 	@Test
 	public void noChars_deleteButtonDoesNothing() {
-		((Button) calculator.findViewById(R.id.button_del)).performClick();
+		((Button) calculator.findViewById(R.id.button_delete)).performClick();
 		assertThat(amountEdit.getText().toString(), is(""));
 	}
 

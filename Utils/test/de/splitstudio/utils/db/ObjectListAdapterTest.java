@@ -1,4 +1,4 @@
-package de.splitstudio.utils;
+package de.splitstudio.utils.db;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
 
+import de.splitstudio.utils.db.ObjectListAdapter;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
