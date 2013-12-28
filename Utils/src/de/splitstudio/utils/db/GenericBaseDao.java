@@ -1,5 +1,8 @@
 package de.splitstudio.utils.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
@@ -9,6 +12,10 @@ public abstract class GenericBaseDao<T> {
 
 	public GenericBaseDao(ObjectContainer db) {
 		this.db = db;
+	}
+
+	public List<T> findAll(Class<T> klaas) {
+		return new ArrayList<T>(db.query(klaas));
 	}
 
 	@SuppressWarnings({ "unchecked", "serial" })
@@ -31,6 +38,10 @@ public abstract class GenericBaseDao<T> {
 
 	public void store(T entity) {
 		db.store(entity);
+	}
+
+	public void delete(T entity) {
+		db.delete(entity);
 	}
 
 }
