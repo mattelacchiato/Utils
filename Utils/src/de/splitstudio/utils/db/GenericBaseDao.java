@@ -38,10 +38,12 @@ public abstract class GenericBaseDao<T> {
 
 	public void store(T entity) {
 		db.store(entity);
+		db.commit();
 	}
 
 	public void delete(T entity) {
 		db.delete(entity);
+		db.commit();
 	}
 
 }
