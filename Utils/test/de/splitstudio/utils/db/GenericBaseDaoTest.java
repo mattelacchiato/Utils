@@ -39,4 +39,10 @@ public class GenericBaseDaoTest {
 	public void findByUuid_found_returnsResult() throws Exception {
 		assertThat((Entity) dao.findByUuid(entity.uuid), is(entity));
 	}
+
+	@Test
+	public void delete_findByUuid_null() throws Exception {
+		dao.delete(entity);
+		assertThat(dao.findByUuid(entity.uuid), is(nullValue()));
+	}
 }
