@@ -28,4 +28,9 @@ public abstract class GenericBaseDao<T> {
 		}
 		return (S) result.next();
 	}
+
+	public void store(T entity) {
+		db.store(entity);
+	}
+
 }

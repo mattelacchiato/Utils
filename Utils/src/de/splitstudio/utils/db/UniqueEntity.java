@@ -2,13 +2,9 @@ package de.splitstudio.utils.db;
 
 import java.util.UUID;
 
-public abstract class UniqueEntity {
+public abstract class UniqueEntity implements CascadeOnDelete {
 
-	public String uuid;
-
-	protected UniqueEntity() {
-		this.uuid = UUID.randomUUID().toString();
-	}
+	public String uuid = UUID.randomUUID().toString();
 
 	@Override
 	public boolean equals(Object other) {
