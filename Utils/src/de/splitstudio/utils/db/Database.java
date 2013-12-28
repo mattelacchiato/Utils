@@ -31,17 +31,17 @@ public class Database {
 		return clear();
 	}
 
-	private static EmbeddedConfiguration createConfig() {
-		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-		config.common().objectClass(CascadeOnDelete.class).cascadeOnDelete(true);
-		return config;
-	}
-
 	public static ObjectContainer clear() {
 		for (Object object : db.query().execute()) {
 			db.delete(object);
 		}
 		return db;
+	}
+
+	private static EmbeddedConfiguration createConfig() {
+		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+		config.common().objectClass(CascadeOnDelete.class).cascadeOnDelete(true);
+		return config;
 	}
 
 }
