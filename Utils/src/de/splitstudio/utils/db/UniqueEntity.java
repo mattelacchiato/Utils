@@ -10,4 +10,17 @@ public abstract class UniqueEntity {
 		this.uuid = UUID.randomUUID().toString();
 	}
 
+	@Override
+	public boolean equals(Object other) {
+		if (other instanceof UniqueEntity) {
+			return uuid.equals(((UniqueEntity) other).uuid);
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return uuid.hashCode();
+	}
+
 }
