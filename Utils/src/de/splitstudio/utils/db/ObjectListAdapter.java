@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-//TODO (Dec 25, 2013): delete one of these ListAdapters...
 public abstract class ObjectListAdapter<T> extends BaseAdapter {
 
 	protected final List<T> objects;
