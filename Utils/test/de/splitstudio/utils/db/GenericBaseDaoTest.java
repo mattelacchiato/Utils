@@ -24,7 +24,7 @@ public class GenericBaseDaoTest {
 	public void setUp() throws Exception {
 		db = Db4oEmbedded.openFile(File.createTempFile(UUID.randomUUID().toString(), "").getAbsolutePath());
 		//TODO (Dec 25, 2013): Database.clear();
-		dao = new GenericBaseDao<GenericBaseDaoTest.Entity>(db) {
+		dao = new GenericBaseDao<Entity>(db) {
 		};
 		entity = new Entity();
 		db.store(entity);
@@ -38,8 +38,5 @@ public class GenericBaseDaoTest {
 	@Test
 	public void findByUuid_found_returnsResult() throws Exception {
 		assertThat((Entity) dao.findByUuid(entity.uuid), is(entity));
-	}
-
-	private static class Entity extends UniqueEntity {
 	}
 }
