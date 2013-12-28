@@ -23,7 +23,7 @@ public class GenericBaseDaoTest {
 	@Before
 	public void setUp() throws Exception {
 		db = Db4oEmbedded.openFile(File.createTempFile(UUID.randomUUID().toString(), "").getAbsolutePath());
-		//TODO (Dec 25, 2013): Database.clear();
+		Database.clear(db);
 		dao = new GenericBaseDao<Entity>(db) {
 		};
 		entity = new Entity();

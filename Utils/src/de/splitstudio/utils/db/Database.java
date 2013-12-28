@@ -32,6 +32,10 @@ public class Database {
 	}
 
 	public static ObjectContainer clear() {
+		return clear(db);
+	}
+
+	public static ObjectContainer clear(EmbeddedObjectContainer db) {
 		for (Object object : db.query().execute()) {
 			db.delete(object);
 		}
