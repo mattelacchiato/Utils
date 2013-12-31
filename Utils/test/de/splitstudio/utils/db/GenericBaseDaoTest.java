@@ -38,21 +38,21 @@ public class GenericBaseDaoTest {
 	@Test
 	public void findByUuid_found_returnsResult() throws Exception {
 		db.store(entity);
-		assertThat((Entity) dao.findByUuid(entity.uuid2), is(entity));
+		assertThat((Entity) dao.findByUuid(entity.uuid), is(entity));
 	}
 
 	@Test
 	public void delete_findByUuid_null() throws Exception {
 		dao.store(entity);
 		dao.delete(entity);
-		assertThat(dao.findByUuid(entity.uuid2), is(nullValue()));
+		assertThat(dao.findByUuid(entity.uuid), is(nullValue()));
 	}
 
 	@Test
 	public void store_keepsUuid() throws Exception {
-		String uuidBefore = entity.uuid2;
+		String uuidBefore = entity.uuid;
 		dao.store(entity);
 		entity = dao.findByUuid(uuidBefore);
-		assertThat(entity.uuid2, is(uuidBefore));
+		assertThat(entity.uuid, is(uuidBefore));
 	}
 }

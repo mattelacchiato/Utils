@@ -9,23 +9,23 @@ import com.db4o.config.annotations.Indexed;
 public abstract class UniqueEntity implements CascadeOnDelete {
 
 	@Indexed
-	public String uuid2;
+	public String uuid;
 
 	public UniqueEntity() {
-		this.uuid2 = UUID.randomUUID().toString();
+		this.uuid = UUID.randomUUID().toString();
 	}
 
 	@Override
 	public boolean equals(Object other) {
 		if (other instanceof UniqueEntity) {
-			return uuid2.equals(((UniqueEntity) other).uuid2);
+			return uuid.equals(((UniqueEntity) other).uuid);
 		}
 		return false;
 	}
 
 	@Override
 	public int hashCode() {
-		return uuid2.hashCode();
+		return uuid.hashCode();
 	}
 
 	@Override

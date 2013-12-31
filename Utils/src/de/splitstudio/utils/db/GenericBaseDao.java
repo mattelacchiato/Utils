@@ -24,7 +24,7 @@ public abstract class GenericBaseDao<T> {
 
 			@Override
 			public boolean match(UniqueEntity entity) {
-				return uuid.equals(entity.uuid2);
+				return uuid.equals(entity.uuid);
 			}
 		});
 		if (result.isEmpty()) {
