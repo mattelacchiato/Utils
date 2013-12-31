@@ -24,14 +24,14 @@ public abstract class GenericBaseDao<T> {
 
 			@Override
 			public boolean match(UniqueEntity entity) {
-				return uuid.equals(entity.uuid);
+				return uuid.equals(entity.uuid2);
 			}
 		});
 		if (result.isEmpty()) {
 			return null;
 		}
 		if (result.size() > 1) {
-			throw new IllegalStateException("Found multple entities for uuid " + uuid);
+			throw new IllegalStateException("Found multple entities for uuid " + uuid + ": " + result.toArray());
 		}
 		return (S) result.next();
 	}

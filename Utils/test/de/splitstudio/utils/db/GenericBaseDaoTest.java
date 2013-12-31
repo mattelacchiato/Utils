@@ -22,12 +22,12 @@ public class GenericBaseDaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		db = Db4oEmbedded.openFile(File.createTempFile(UUID.randomUUID().toString(), "").getAbsolutePath());
+		String tempFile = File.createTempFile(UUID.randomUUID().toString(), "").getAbsolutePath();
+		db = Db4oEmbedded.openFile(tempFile);
 		Database.clear(db);
 		dao = new GenericBaseDao<Entity>(db) {
 		};
 		entity = new Entity();
-		db.store(entity);
 	}
 
 	@Test
@@ -37,12 +37,22 @@ public class GenericBaseDaoTest {
 
 	@Test
 	public void findByUuid_found_returnsResult() throws Exception {
-		assertThat((Entity) dao.findByUuid(entity.uuid), is(entity));
+		db.store(entity);
+		assertThat((Entity) dao.findByUuid(entity.uuid2), is(entity));
 	}
 
 	@Test
 	public void delete_findByUuid_null() throws Exception {
+		dao.store(entity);
 		dao.delete(entity);
-		assertThat(dao.findByUuid(entity.uuid), is(nullValue()));
+		assertThat(dao.findByUuid(entity.uuid2), is(nullValue()));
+	}
+
+	@Test
+	public void store_keepsUuid() throws Exception {
+		String uuidBefore = entity.uuid2;
+		dao.store(entity);
+		entity = dao.findByUuid(uuidBefore);
+		assertThat(entity.uuid2, is(uuidBefore));
 	}
 }
