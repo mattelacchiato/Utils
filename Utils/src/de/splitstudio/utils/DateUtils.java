@@ -49,4 +49,8 @@ public class DateUtils {
 		return DateFormat.getDateInstance(DateFormat.SHORT).format(date);
 	}
 
+	public static String formatAsLongDate(Date date) {
+		return DateFormat.getDateInstance(DateFormat.LONG).format(date);
+	}
+
 }

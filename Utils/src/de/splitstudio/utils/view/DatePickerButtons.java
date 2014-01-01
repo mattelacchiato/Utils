@@ -1,9 +1,9 @@
 package de.splitstudio.utils.view;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import static de.splitstudio.utils.DateUtils.formatAsLongDate;
+import static de.splitstudio.utils.DateUtils.formatAsShortDate;
+
 import java.util.Calendar;
-import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -20,10 +20,6 @@ public class DatePickerButtons extends LinearLayout {
 
 	private Calendar minDate;
 
-	private final Locale locale;
-
-	private final DateFormat dateFormat;
-
 	private final OnClickListener dateListener;
 
 	private final DatePickerDialog.OnDateSetListener dateSetListener;
@@ -36,9 +32,7 @@ public class DatePickerButtons extends LinearLayout {
 
 	public DatePickerButtons(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		locale = getResources().getConfiguration().locale;
-		dateFormat = SimpleDateFormat.getDateInstance(SimpleDateFormat.LONG, locale);
-		date = Calendar.getInstance(locale);
+		date = Calendar.getInstance();
 		dateListener = new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -96,9 +90,8 @@ public class DatePickerButtons extends LinearLayout {
 		boolean isValid = minDate == null || cal.after(minDate);
 
 		if (!isValid) {
-			DateFormat shortDateFormat = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT, locale);
-			String currentTime = shortDateFormat.format(date.getTime());
-			String minTime = shortDateFormat.format(minDate.getTime());
+			String currentTime = formatAsShortDate(date.getTime());
+			String minTime = formatAsShortDate(minDate.getTime());
 			String msg = getContext().getString(R.string.error_date_before_category_created, currentTime, minTime);
 			createAlert(msg);
 		}
@@ -119,8 +112,7 @@ public class DatePickerButtons extends LinearLayout {
 	}
 
 	private void updateDateText() {
-		String dateText = dateFormat.format(date.getTime());
-		((Button) findViewById(R.id.date_field)).setText(dateText);
+		((Button) findViewById(R.id.date_field)).setText(formatAsLongDate(date.getTime()));
 	}
 
 	private void datePrevNextAction(final int value) {

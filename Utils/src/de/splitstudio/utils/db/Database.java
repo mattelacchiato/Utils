@@ -47,6 +47,7 @@ public class Database {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 		config.common().objectClass(CascadeOnDelete.class).cascadeOnDelete(true);
 		config.common().objectClass(CascadeOnDelete.class).cascadeOnActivate(true);
+		config.common().objectClass(CascadeOnDelete.class).cascadeOnUpdate(true);
 		config.common().add(new UuidSupport());
 		return config;
 	}
