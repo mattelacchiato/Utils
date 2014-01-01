@@ -8,7 +8,6 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.EmbeddedObjectContainer;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
-import com.db4o.config.UuidSupport;
 
 public class Database {
 
@@ -43,12 +42,14 @@ public class Database {
 		return db;
 	}
 
-	private static EmbeddedConfiguration createConfig() {
+	public static EmbeddedConfiguration createConfig() {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 		config.common().objectClass(CascadeOnDelete.class).cascadeOnDelete(true);
 		config.common().objectClass(CascadeOnDelete.class).cascadeOnActivate(true);
 		config.common().objectClass(CascadeOnDelete.class).cascadeOnUpdate(true);
-		config.common().add(new UuidSupport());
+		config.common().activationDepth(Integer.MAX_VALUE);
+		config.common().updateDepth(Integer.MAX_VALUE);
+//		config.common().add(new UuidSupport());
 		return config;
 	}
 

@@ -19,7 +19,7 @@ public abstract class GenericBaseDao<T> {
 	}
 
 	@SuppressWarnings({ "unchecked", "serial" })
-	public <S extends UniqueEntity> S findByUuid(final String uuid) {
+	public T findByUuid(final String uuid) {
 		ObjectSet<UniqueEntity> result = db.query(new Predicate<UniqueEntity>() {
 
 			@Override
@@ -33,7 +33,7 @@ public abstract class GenericBaseDao<T> {
 		if (result.size() > 1) {
 			throw new IllegalStateException("Found multple entities for uuid " + uuid + ": " + result.toArray());
 		}
-		return (S) result.next();
+		return (T) result.next();
 	}
 
 	public void store(T entity) {
