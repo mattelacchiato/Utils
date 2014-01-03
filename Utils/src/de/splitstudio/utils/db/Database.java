@@ -1,6 +1,7 @@
 package de.splitstudio.utils.db;
 
 import java.io.File;
+import java.util.TreeSet;
 
 import android.content.Context;
 
@@ -44,11 +45,12 @@ public class Database {
 
 	public static EmbeddedConfiguration createConfig() {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-		config.common().objectClass(CascadeOnDelete.class).cascadeOnDelete(true);
-		config.common().objectClass(CascadeOnDelete.class).cascadeOnActivate(true);
-		config.common().objectClass(CascadeOnDelete.class).cascadeOnUpdate(true);
-		config.common().activationDepth(Integer.MAX_VALUE);
+//		config.common().activationDepth(Integer.MAX_VALUE);
 		config.common().updateDepth(Integer.MAX_VALUE);
+		config.common().objectClass(TreeSet.class).cascadeOnDelete(true);
+//		config.common().objectClass(Cascadable.class).cascadeOnDelete(true);
+//		config.common().objectClass(Cascadable.class).cascadeOnActivate(true);
+//		config.common().objectClass(Cascadable.class).cascadeOnUpdate(true);
 //		config.common().add(new UuidSupport());
 		return config;
 	}

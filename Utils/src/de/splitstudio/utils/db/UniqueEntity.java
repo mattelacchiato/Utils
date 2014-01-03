@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.db4o.config.annotations.Indexed;
 
-public abstract class UniqueEntity implements CascadeOnDelete {
+public abstract class UniqueEntity implements Cascadable {
 
 	@Indexed
 	public String uuid;
