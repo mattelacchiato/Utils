@@ -18,11 +18,11 @@ public class DialogHelper {
 	};
 
 	public static void createQuestion(Context context, int title, int question, int cancel, int ok,
-			final Runnable yesAction) {
+			final Runnable yesAction, Object... questionArgs) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle(title);
 		builder.setIcon(android.R.drawable.ic_dialog_alert);
-		builder.setMessage(question);
+		builder.setMessage(context.getString(question, questionArgs));
 		builder.setPositiveButton(ok, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(final DialogInterface dialog, final int which) {
@@ -30,6 +30,15 @@ public class DialogHelper {
 			}
 		});
 		builder.setNegativeButton(cancel, EMPTY_LISTENER);
+		builder.show();
+	}
+
+	public static void createAlert(Context context, int title, int message, int ok) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(title);
+		builder.setIcon(android.R.drawable.ic_dialog_alert);
+		builder.setMessage(message);
+		builder.setPositiveButton(ok, EMPTY_LISTENER);
 		builder.show();
 	}
 

@@ -18,10 +18,14 @@ public class Database {
 
 	public static synchronized ObjectContainer getInstance(Context context) {
 		if (db == null) {
-			String databaseFileName = new File(context.getApplicationContext().getFilesDir(), "db").getAbsolutePath();
+			String databaseFileName = getFile(context).getAbsolutePath();
 			db = Db4oEmbedded.openFile(createConfig(), databaseFileName);
 		}
 		return db;
+	}
+
+	public static File getFile(Context context) {
+		return new File(context.getApplicationContext().getFilesDir(), "db");
 	}
 
 	/*

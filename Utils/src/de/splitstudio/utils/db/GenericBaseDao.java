@@ -45,5 +45,4 @@ public abstract class GenericBaseDao<T> {
 		db.delete(entity);
 		db.commit();
 	}
-
 }
