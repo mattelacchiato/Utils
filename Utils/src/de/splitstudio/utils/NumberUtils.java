@@ -8,6 +8,7 @@ public class NumberUtils {
 	private static final double CENT_FACTOR = 100;
 
 	private static NumberFormat currencyFormat;
+	private static NumberFormat currencyIntegerFormat;
 	private static NumberFormat decimalFormat;
 
 	static {
@@ -16,6 +17,8 @@ public class NumberUtils {
 
 	static void init() {
 		currencyFormat = NumberFormat.getCurrencyInstance();
+		currencyIntegerFormat = NumberFormat.getCurrencyInstance();
+		currencyIntegerFormat.setMaximumFractionDigits(0);
 		decimalFormat = NumberFormat.getNumberInstance();
 		decimalFormat.setMinimumFractionDigits(2);
 		decimalFormat.setMaximumFractionDigits(2);
@@ -27,6 +30,10 @@ public class NumberUtils {
 
 	public static String formatAsCurrency(int cents) {
 		return currencyFormat.format(centToDouble(cents));
+	}
+
+	public static String formatAsIntegerCurrency(int cents) {
+		return currencyIntegerFormat.format(centToDouble(cents));
 	}
 
 	public static double centToDouble(int cents) {

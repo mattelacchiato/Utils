@@ -8,10 +8,7 @@ import java.util.Locale;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
-@RunWith(RobolectricTestRunner.class)
 public class NumberUtilsTest {
 
 	private Locale systemDefault;
@@ -87,6 +84,21 @@ public class NumberUtilsTest {
 	public void formatAsDecimal_100toGermany_1comma00() {
 		setGermanLocale();
 		assertThat(NumberUtils.formatAsDecimal(100), is("1,00"));
+	}
+
+	@Test
+	public void formatAsIntegerCurrency_100_1Dollar() throws Exception {
+		assertThat(NumberUtils.formatAsIntegerCurrency(100), is("$1"));
+	}
+
+	@Test
+	public void formatAsIntegerCurrency_199_2Dollar() throws Exception {
+		assertThat(NumberUtils.formatAsIntegerCurrency(199), is("$2"));
+	}
+
+	@Test
+	public void formatAsIntegerCurrency_150_2Dollar() throws Exception {
+		assertThat(NumberUtils.formatAsIntegerCurrency(199), is("$2"));
 	}
 
 	private void setGermanLocale() {
