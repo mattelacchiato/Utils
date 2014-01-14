@@ -1,7 +1,7 @@
 package de.splitstudio.utils.db;
 
 import java.io.File;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import android.content.Context;
 
@@ -51,7 +51,7 @@ public class Database {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 //		config.common().activationDepth(Integer.MAX_VALUE);
 		config.common().updateDepth(Integer.MAX_VALUE);
-		config.common().objectClass(TreeSet.class).cascadeOnDelete(true);
+		config.common().objectClass(ArrayList.class).cascadeOnDelete(true);
 //		config.common().objectClass(Cascadable.class).cascadeOnDelete(true);
 //		config.common().objectClass(Cascadable.class).cascadeOnActivate(true);
 //		config.common().objectClass(Cascadable.class).cascadeOnUpdate(true);
