@@ -17,7 +17,7 @@ import android.widget.Button;
 import de.splitstudio.utils.R;
 
 @RunWith(RobolectricTestRunner.class)
-public class CalculatorTestGermanyLocale {
+public class CalculatorTestGermanLocale {
 
 	private Calculator calculator;
 
@@ -31,7 +31,7 @@ public class CalculatorTestGermanyLocale {
 	}
 
 	@Test
-	public void germanLocale_speratorIsColon() {
+	public void speratorIsColon() {
 		Button deleteButton = (Button) calculator.findViewById(R.id.button_seperator);
 		assertThat(deleteButton.getText().toString(), is(","));
 	}

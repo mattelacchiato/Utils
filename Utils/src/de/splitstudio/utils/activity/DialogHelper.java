@@ -56,7 +56,6 @@ public class DialogHelper {
 		int month = date.get(Calendar.MONTH);
 		int dayOfMonth = date.get(Calendar.DAY_OF_MONTH);
 		new DatePickerDialog(context, dateSetListener, year, month, dayOfMonth).show();
-
 	}
 
 }

@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.db4o.config.annotations.Indexed;
 
-public abstract class UniqueEntity implements Cascadable {
+public abstract class UniqueEntity {
 
 	@Indexed
 	public String uuid;

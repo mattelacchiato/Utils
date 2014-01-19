@@ -33,7 +33,7 @@ public class Calculator extends LinearLayout {
 	}
 
 	public Calculator setAmount(String amount) {
-		//need to use find, because onAttachedToWindow may not be called, yet
+		//need to search, because onAttachedToWindow may not be called, yet
 		((EditText) findViewById(R.id.calculator_amount)).setText(amount);
 		return this;
 	}

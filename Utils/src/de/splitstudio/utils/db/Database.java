@@ -10,6 +10,9 @@ import com.db4o.EmbeddedObjectContainer;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
 
+/**
+ * Holds a singleton reference of an {@link EmbeddedObjectContainer}.
+ */
 public class Database {
 
 	private static EmbeddedObjectContainer db;
@@ -49,13 +52,13 @@ public class Database {
 
 	public static EmbeddedConfiguration createConfig() {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-//		config.common().activationDepth(Integer.MAX_VALUE);
 		config.common().updateDepth(Integer.MAX_VALUE);
-		config.common().objectClass(ArrayList.class).cascadeOnDelete(true);
-//		config.common().objectClass(Cascadable.class).cascadeOnDelete(true);
-//		config.common().objectClass(Cascadable.class).cascadeOnActivate(true);
-//		config.common().objectClass(Cascadable.class).cascadeOnUpdate(true);
+//		config.common().activationDepth(Integer.MAX_VALUE);
 //		config.common().add(new UuidSupport());
+		config.common().objectClass(ArrayList.class).cascadeOnDelete(true);
+		config.common().objectClass(UniqueEntity.class).cascadeOnDelete(true);
+		config.common().objectClass(UniqueEntity.class).cascadeOnActivate(true);
+		config.common().objectClass(UniqueEntity.class).cascadeOnUpdate(true);
 		return config;
 	}
 

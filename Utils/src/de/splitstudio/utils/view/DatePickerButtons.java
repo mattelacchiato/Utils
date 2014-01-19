@@ -4,6 +4,7 @@ import static de.splitstudio.utils.DateUtils.formatAsLongDate;
 import static de.splitstudio.utils.DateUtils.formatAsShortDate;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -63,8 +64,13 @@ public class DatePickerButtons extends LinearLayout {
 		return date;
 	}
 
-	public void setAndUpdateDate(final Calendar date) {
+	public void setAndUpdateDate(Calendar date) {
 		this.date = date;
+		updateDateText();
+	}
+
+	public void setAndUpdateDate(Date date) {
+		this.date.setTime(date);
 		updateDateText();
 	}
 
