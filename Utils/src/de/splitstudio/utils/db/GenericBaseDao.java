@@ -21,7 +21,6 @@ public abstract class GenericBaseDao<T> {
 	@SuppressWarnings({ "unchecked", "serial" })
 	public T findByUuid(final String uuid) {
 		ObjectSet<UniqueEntity> result = db.query(new Predicate<UniqueEntity>() {
-
 			@Override
 			public boolean match(UniqueEntity entity) {
 				return uuid.equals(entity.uuid);

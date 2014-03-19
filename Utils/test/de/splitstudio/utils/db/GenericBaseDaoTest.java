@@ -38,7 +38,7 @@ public class GenericBaseDaoTest {
 	@Test
 	public void findByUuid_found_returnsResult() throws Exception {
 		db.store(entity);
-		assertThat((Entity) dao.findByUuid(entity.uuid), is(entity));
+		assertThat(dao.findByUuid(entity.uuid), is(entity));
 	}
 
 	@Test

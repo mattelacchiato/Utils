@@ -19,6 +19,10 @@ public class Database {
 
 	private Database() {}
 
+	public static synchronized ObjectContainer getInstance(DbMigration dbMigration) {
+		return dbMigration.run(getInstance(dbMigration.getContext()));
+	}
+
 	public static synchronized ObjectContainer getInstance(Context context) {
 		if (db == null) {
 			String databaseFileName = getFile(context).getAbsolutePath();
