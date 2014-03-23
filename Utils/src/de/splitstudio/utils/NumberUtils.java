@@ -1,11 +1,13 @@
 package de.splitstudio.utils;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
 public class NumberUtils {
 
 	private static final double CENT_FACTOR = 100;
+	private static final BigDecimal CENT_FACTOR_BD = new BigDecimal(CENT_FACTOR);
 
 	private static NumberFormat currencyFormat;
 	private static NumberFormat currencyIntegerFormat;
@@ -41,7 +43,9 @@ public class NumberUtils {
 	}
 
 	public static int parseCent(String amount) throws ParseException {
-		return (int) (decimalFormat.parse(amount).doubleValue() * CENT_FACTOR);
+		Number parsed = decimalFormat.parse(amount);
+		BigDecimal currencyValue = new BigDecimal(String.valueOf(parsed));
+		return currencyValue.multiply(CENT_FACTOR_BD).intValue();
 	}
 
 }

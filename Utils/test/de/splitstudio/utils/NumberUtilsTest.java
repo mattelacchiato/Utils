@@ -54,6 +54,11 @@ public class NumberUtilsTest {
 	}
 
 	@Test
+	public void parseCent_1dot14_114() throws Exception {
+		assertThat(NumberUtils.parseCent("1.14"), is(114));
+	}
+
+	@Test
 	public void parseCent_minus1dollar() throws Exception {
 		assertThat(NumberUtils.parseCent("-1.00"), is(-100));
 	}
