@@ -10,13 +10,13 @@ import android.content.pm.PackageManager.NameNotFoundException;
 
 import com.db4o.ObjectContainer;
 
-public abstract class DbMigration {
+public abstract class DatabaseMigration {
 
 	private static final String VERSION_FILENAME = "version";
 	private final Context context;
 	private final File file;
 
-	public DbMigration(Context context) {
+	public DatabaseMigration(Context context) {
 		this.context = context;
 		this.file = new File(context.getFilesDir(), VERSION_FILENAME);
 	}

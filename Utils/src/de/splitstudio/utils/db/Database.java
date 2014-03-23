@@ -19,15 +19,23 @@ public class Database {
 
 	private Database() {}
 
-	public static synchronized ObjectContainer getInstance(DbMigration dbMigration) {
-		return dbMigration.run(getInstance(dbMigration.getContext()));
+	public static synchronized ObjectContainer getInstance(DatabaseMigration dbMigration) {
+		if (db == null) {
+			dbMigration.run(createInstance(dbMigration.getContext()));
+		}
+		return db;
 	}
 
 	public static synchronized ObjectContainer getInstance(Context context) {
 		if (db == null) {
-			String databaseFileName = getFile(context).getAbsolutePath();
-			db = Db4oEmbedded.openFile(createConfig(), databaseFileName);
+			createInstance(context);
 		}
+		return db;
+	}
+
+	private static EmbeddedObjectContainer createInstance(Context context) {
+		String databaseFileName = getFile(context).getAbsolutePath();
+		db = Db4oEmbedded.openFile(createConfig(), databaseFileName);
 		return db;
 	}
 
