@@ -26,7 +26,6 @@ public abstract class DatabaseMigration {
 		int lastVersion = getLastVersion();
 		if (currentVersion != lastVersion) {
 			migrate(lastVersion, currentVersion, db);
-		} else {
 			writeCurrentVersionToFile(currentVersion);
 		}
 
