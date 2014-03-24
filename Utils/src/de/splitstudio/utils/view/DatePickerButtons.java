@@ -79,11 +79,6 @@ public class DatePickerButtons extends LinearLayout {
 	}
 
 	@Override
-	public boolean isInEditMode() {
-		return false;
-	}
-
-	@Override
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();
 		((Button) findViewById(R.id.date_field)).setOnClickListener(dateListener);
