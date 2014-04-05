@@ -1,6 +1,10 @@
 package de.splitstudio.utils;
 
+import static java.text.DateFormat.SHORT;
+import static java.util.Locale.GERMAN;
+
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -51,6 +55,14 @@ public class DateUtils {
 
 	public static String formatAsLongDate(Date date) {
 		return DateFormat.getDateInstance(DateFormat.LONG).format(date);
+	}
+
+	public static Date onGermanDate(String germanShortDate) {
+		try {
+			return DateFormat.getDateInstance(SHORT, GERMAN).parse(germanShortDate);
+		} catch (ParseException e) {
+			throw new IllegalStateException(e);
+		}
 	}
 
 }
