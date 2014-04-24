@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">Utils</string>
+    <string name="error">Sorry!</string>
+    <string name="error_date_before_category_created">Ausgabe am %1$s kann nicht erstellt werden, wenn die Kategorie zu dieser Zeit noch nicht existiert (erstellt am: %2$s)</string><!-- date, date -->
+    <string name="ok">Okay</string>
+    
+</resources>
