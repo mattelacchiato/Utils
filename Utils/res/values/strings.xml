@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Utils</string>
-    <string name="error">Error</string>
+    <string name="error">Sorry!</string>
     <string name="error_date_before_category_created">Cannot create expenditure on %1$s, when category wasn\'t created at that time (created at: %2$s)</string><!-- date, date -->
     <string name="ok">Okay</string>
     
